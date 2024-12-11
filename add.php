@@ -17,7 +17,7 @@ if (isset($_POST['submit'])) {
             $errors['email'] = 'email must be a valid email address';
 
         }
-        echo htmlspecialchars($_POST['email']);
+
     }
 
     if (empty($_POST['title'])) {
@@ -36,6 +36,12 @@ if (isset($_POST['submit'])) {
         if (!preg_match('/^([a-zA-Z\s]+)(,s*[a-zA-Z\s]*)*$/', $ingredients)) {
             $errors['ingredients'] = 'Ingredients must be a comma separated list';
         }
+    }
+    if (array_filter($errors)) {
+        echo 'error in the form ';
+    } else {
+        //echo 'form is valid';
+        header('location: index.php');
     }
 }
 
@@ -60,7 +66,7 @@ include('templates/header.php'); ?>
             <?php echo $errors['title']; ?>
         </div>
         <label>Ingredients (comma separated):</label>
-        <input type="text" name="ingredients" value="<?php echo $title($ingredients) ?>">
+        <input type="text" name="ingredients" value="<?php echo htmlspecialchars($ingredients) ?>">
         <div class="red-text">
             <?php echo $errors['ingredients']; ?>
         </div>
