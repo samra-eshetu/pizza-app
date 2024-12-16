@@ -29,6 +29,7 @@ include('templates/header.php'); ?>
         <?php foreach ($pizzas as $index => $pizza): ?>
             <div class="col s6 md3">
                 <div class="card z-depth-0">
+                    <img src="img/pizza.png" class="pizza" alt="">
                     <div class="card-content center">
                         <h6><?php echo htmlspecialchars($pizza['title']); ?></h6>
                         <ul>
